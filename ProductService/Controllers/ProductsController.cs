@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Models;
-using ProductService.Services;
+using ProductService.Repositories;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ProductService.Controllers
 {
@@ -9,65 +10,59 @@ namespace ProductService.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-        private readonly ProductService.Services.ProductService _productService;
+        private readonly IProductRepository _productRepository;
 
-        public ProductsController(ProductService.Services.ProductService productService)
+        public ProductsController(IProductRepository productRepository)
         {
-            _productService = productService;
+            _productRepository = productRepository;
         }
 
         [HttpGet]
-        public ActionResult<List<Product>> GetProducts()
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return _productService.GetProducts();
+            return Ok(await _productRepository.GetProductsAsync());
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Product> GetProductById(string id)
+        public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            var product = _productService.GetProductById(id);
+            var product = await _productRepository.GetProductByIdAsync(id);
             if (product == null)
             {
                 return NotFound();
             }
-            return product;
+            return Ok(product);
         }
 
         [HttpPost]
-        public ActionResult<Product> AddProduct(Product product)
+        public async Task<ActionResult> AddProduct([FromBody] Product product)
         {
-            _productService.AddProduct(product);
-            return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
+            await _productRepository.AddProductAsync(product);
+            return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateProduct(string id, Product product)
+        public async Task<ActionResult> UpdateProduct(int id, [FromBody] Product product)
         {
-            if (id != product.Id)
-            {
-                return BadRequest();
-            }
-
-            var existingProduct = _productService.GetProductById(id);
+            var existingProduct = await _productRepository.GetProductByIdAsync(id);
             if (existingProduct == null)
             {
                 return NotFound();
             }
-
-            _productService.UpdateProduct(product);
+            product.Id = id;
+            await _productRepository.UpdateProductAsync(product);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteProduct(string id)
+        public async Task<ActionResult> DeleteProduct(int id)
         {
-            var product = _productService.GetProductById(id);
-            if (product == null)
+            var existingProduct = await _productRepository.GetProductByIdAsync(id);
+            if (existingProduct == null)
             {
                 return NotFound();
             }
-
-            _productService.DeleteProduct(id);
+            await _productRepository.DeleteProductAsync(id);
             return NoContent();
         }
     }

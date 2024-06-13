@@ -1,0 +1,8 @@
+<div>
+    <h1>PEDIDOS</h1>
+    <ul>
+      <li *ngFor="let order of orders">
+        Pedido ID: {{ order.id }} - Producto ID: {{ order.productId }} - Cantidad: {{ order.quantity }}
+      </li>
+    </ul>
+  </div>

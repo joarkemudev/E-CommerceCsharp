@@ -6,7 +6,7 @@ import axios from 'axios';
 })
 export class ProductService {
 
-  private apiUrl = 'http://localhost:5001/api/products';
+  private apiUrl = 'http://localhost:5146/api/products';
 
   constructor() { }
 

@@ -13,7 +13,7 @@ namespace ProductService.Services
             return _products;
         }
 
-        public Product GetProductById(string id)
+        public Product GetProductById(int id)
         {
             return _products.FirstOrDefault(p => p.Id == id);
         }
@@ -35,7 +35,7 @@ namespace ProductService.Services
             }
         }
 
-        public void DeleteProduct(string id)
+        public void DeleteProduct(int id)
         {
             var product = GetProductById(id);
             if (product != null)
