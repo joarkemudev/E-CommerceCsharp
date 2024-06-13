@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  productservice:
+    image: mcr.microsoft.com/dotnet/aspnet:5.0
+    container_name: productservice
+    build:
+      context: ./ProductService
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"
+
+  orderservice:
+    image: mcr.microsoft.com/dotnet/aspnet:5.0
+    container_name: orderservice
+    build:
+      context: ./OrderService
+      dockerfile: Dockerfile
+    ports:
+      - "5002:80"
