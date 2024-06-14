@@ -13,7 +13,7 @@ namespace OrderService.Services
             return _orders;
         }
 
-        public Order GetOrderById(string id)
+        public Order GetOrderById(int id)
         {
             return _orders.FirstOrDefault(o => o.Id == id);
         }
@@ -32,7 +32,7 @@ namespace OrderService.Services
             }
         }
 
-        public void DeleteOrder(string id)
+        public void DeleteOrder(int id)
         {
             var order = GetOrderById(id);
             if (order != null)
