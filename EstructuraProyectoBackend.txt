@@ -1,0 +1,38 @@
+ecommerce-frontend/
+├── src/
+│   ├── app/
+│   │   ├── product-list/
+│   │   │   ├── product-list.component.css
+│   │   │   ├── product-list.component.html
+│   │   │   ├── product-list.component.ts
+│   │   │   └── product-list.component.spec.ts
+│   │   ├── product-detail/
+│   │   │   ├── product-detail.component.css
+│   │   │   ├── product-detail.component.html
+│   │   │   ├── product-detail.component.ts
+│   │   │   └── product-detail.component.spec.ts
+│   │   ├── order-list/
+│   │   │   ├── order-list.component.css
+│   │   │   ├── order-list.component.html
+│   │   │   ├── order-list.component.ts
+│   │   │   └── order-list.component.spec.ts
+│   │   ├── order-create/
+│   │   │   ├── order-create.component.css
+│   │   │   ├── order-create.component.html
+│   │   │   ├── order-create.component.ts
+│   │   │   └── order-create.component.spec.ts
+│   │   ├── services/
+│   │   │   ├── product.service.ts
+│   │   │   ├── order.service.ts
+│   │   │   └── ...
+│   │   ├── app-routing.module.ts
+│   │   ├── app.component.css
+│   │   ├── app.component.html
+│   │   ├── app.component.ts
+│   │   └── app.module.ts
+├── assets/
+├── environments/
+├── index.html
+├── main.ts
+├── styles.css
+└── ...

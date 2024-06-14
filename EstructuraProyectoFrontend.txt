@@ -1,0 +1,33 @@
+backend/
+├── ProductService/
+│   ├── Controllers/
+│   │   └── ProductsController.cs
+│   ├── Models/
+│   │   └── Product.cs
+│   │   └── EcomerceContext.cs
+│   ├── Repositories/
+│   │   └── IProductRepository.cs
+│   │   └── ProductRepository.cs
+│   ├── Services/
+│   │   └── ProductService.cs
+│   ├── appsettings.json
+│   ├── ProductService.csproj
+│   ├── Program.cs
+│   ├── Startup.cs
+├── OrderService/
+│   ├── Controllers/
+│   │   └── OrdersController.cs
+│   ├── Models/
+│   │   └── EcomerceContext.cs
+│   │   └── Order.cs
+│   ├── Repositories/
+│   │   └── IOrderRepository.cs
+│   │   └── OrderRepository.cs
+│   ├── Services/
+│   │   └── OrderService.cs
+│   ├── appsettings.json
+│   ├── OrderService.csproj
+│   ├── Program.cs
+│   ├── Startup.cs
+├── docker-compose.yml
+└── README.md
